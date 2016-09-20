@@ -31,46 +31,60 @@
             this.input = new System.Windows.Forms.TextBox();
             this.label = new System.Windows.Forms.Label();
             this.btn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // input
             // 
-            this.input.Location = new System.Drawing.Point(92, 155);
+            this.input.Location = new System.Drawing.Point(92, 144);
             this.input.Name = "input";
             this.input.Size = new System.Drawing.Size(100, 20);
             this.input.TabIndex = 0;
+            this.input.Visible = false;
             this.input.TextChanged += new System.EventHandler(this.input_TextChanged);
             // 
             // label
             // 
             this.label.AutoSize = true;
-            this.label.Location = new System.Drawing.Point(127, 112);
+            this.label.Location = new System.Drawing.Point(116, 112);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(35, 13);
+            this.label.Size = new System.Drawing.Size(64, 13);
             this.label.TabIndex = 1;
-            this.label.Text = "label1";
+            this.label.Text = "Fast Fingers";
             this.label.Click += new System.EventHandler(this.label_Click);
             // 
             // btn
             // 
             this.btn.Enabled = false;
-            this.btn.Location = new System.Drawing.Point(104, 218);
+            this.btn.Location = new System.Drawing.Point(105, 218);
             this.btn.Name = "btn";
             this.btn.Size = new System.Drawing.Size(75, 23);
             this.btn.TabIndex = 2;
             this.btn.Text = "calculate";
             this.btn.UseVisualStyleBackColor = true;
+            this.btn.Click += new System.EventHandler(this.btn_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(105, 181);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "start";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.start_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn);
             this.Controls.Add(this.label);
             this.Controls.Add(this.input);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Keystroke Project";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -88,6 +102,7 @@
 
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.Button btn;
+        private System.Windows.Forms.Button button1;
     }
 }
 

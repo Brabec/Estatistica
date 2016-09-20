@@ -12,17 +12,23 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
+        static int cont = 0;
+
         public Form1()
         {
+            
             InitializeComponent();
         }
 
         private void input_TextChanged(object sender, EventArgs e)
-        {   
-
+        {
             if (input.Text.Equals(label.Text))
             {
-                btn.Enabled = true;
+                cont++;
+                if(cont == 3)
+                {
+                    btn.Enabled = true;
+                }
                 // se for igual a função db será chamada retornando uma palavra aleatoria
                 // do dicionario
                 this.label.Text = db();
@@ -40,6 +46,19 @@ namespace WindowsFormsApplication1
         }
 
         private void label_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void start_Click(object sender, EventArgs e)
+        {
+            this.input.Visible = true;
+            this.label.Text = db();
+            //button1.Enabled = false;
+            button1.Visible = false;
+        }
+
+        private void btn_Click(object sender, EventArgs e)
         {
 
         }
