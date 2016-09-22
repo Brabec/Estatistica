@@ -32,6 +32,7 @@
             this.label = new System.Windows.Forms.Label();
             this.btn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.labelTempo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // input
@@ -42,6 +43,7 @@
             this.input.TabIndex = 0;
             this.input.Visible = false;
             this.input.TextChanged += new System.EventHandler(this.input_TextChanged);
+            this.input.KeyDown += new System.Windows.Forms.KeyEventHandler(this.input_KeyDown);
             // 
             // label
             // 
@@ -74,11 +76,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.start_Click);
             // 
+            // labelTempo
+            // 
+            this.labelTempo.AutoSize = true;
+            this.labelTempo.Location = new System.Drawing.Point(133, 70);
+            this.labelTempo.Name = "labelTempo";
+            this.labelTempo.Size = new System.Drawing.Size(35, 13);
+            this.labelTempo.TabIndex = 4;
+            this.labelTempo.Text = "label1";
+            this.labelTempo.Click += new System.EventHandler(this.labelTempo_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.labelTempo);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btn);
             this.Controls.Add(this.label);
@@ -103,6 +116,7 @@
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.Button btn;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label labelTempo;
     }
 }
 
