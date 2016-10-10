@@ -84,6 +84,7 @@
             this.labelTempo.Size = new System.Drawing.Size(35, 13);
             this.labelTempo.TabIndex = 4;
             this.labelTempo.Text = "label1";
+            this.labelTempo.Visible = false;
             this.labelTempo.Click += new System.EventHandler(this.labelTempo_Click);
             // 
             // Form1

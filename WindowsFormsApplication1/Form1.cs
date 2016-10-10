@@ -16,10 +16,12 @@ namespace WindowsFormsApplication1
     {
         //static string path = Path.GetTempFileName();
         static int cont = 0;
+        static double media = 0;
         static string path = "C:\\Users\\Brabec\\Documents\\Estudos\\Estatística\\Estatistica\\dictionary.txt";
         static string[] lines = File.ReadAllLines(path);
         static List<double> temp = new List<double>();
-        
+        static double tempoTotal = 0;
+
         public Form1()
         {
             InitializeComponent();
@@ -44,14 +46,18 @@ namespace WindowsFormsApplication1
             double delta = Math.Abs(ts.TotalSeconds);
 
             temp.Add(delta);
-
+            
             int size = temp.Count;
             double tempoAtual = 0;
 
-            tempoAtual = delta - temp.ElementAt(size - 1);
-
-            // label tempo
-            labelTempo.Text = converter.ConvertToString(delta);
+            if (size > 1)
+            {   // label tempo
+                tempoAtual = (delta - temp[size - 2]);
+                labelTempo.Text = converter.ConvertToString(tempoAtual);
+                tempoTotal += tempoAtual;
+            }
+            
+            media = tempoTotal / cont;
             //letra digitada
             //labelTempo.Text = text;
             
@@ -112,7 +118,10 @@ namespace WindowsFormsApplication1
 
         private void btn_Click(object sender, EventArgs e)
         {
-
+            labelTempo.Visible = true;
+            labelTempo.Text = "Média de Digitação: "+media+" segundos";
+            input.Visible = false;
+            btn.Visible = false;
         }
 
         private void labelTempo_Click(object sender, EventArgs e)
