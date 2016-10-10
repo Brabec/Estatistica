@@ -37,7 +37,7 @@
             // 
             // input
             // 
-            this.input.Location = new System.Drawing.Point(92, 144);
+            this.input.Location = new System.Drawing.Point(244, 256);
             this.input.Name = "input";
             this.input.Size = new System.Drawing.Size(100, 20);
             this.input.TabIndex = 0;
@@ -48,9 +48,10 @@
             // label
             // 
             this.label.AutoSize = true;
-            this.label.Location = new System.Drawing.Point(116, 112);
+            this.label.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label.Location = new System.Drawing.Point(251, 127);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(64, 13);
+            this.label.Size = new System.Drawing.Size(93, 19);
             this.label.TabIndex = 1;
             this.label.Text = "Fast Fingers";
             this.label.Click += new System.EventHandler(this.label_Click);
@@ -58,7 +59,7 @@
             // btn
             // 
             this.btn.Enabled = false;
-            this.btn.Location = new System.Drawing.Point(105, 218);
+            this.btn.Location = new System.Drawing.Point(255, 350);
             this.btn.Name = "btn";
             this.btn.Size = new System.Drawing.Size(75, 23);
             this.btn.TabIndex = 2;
@@ -68,7 +69,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(105, 181);
+            this.button1.Location = new System.Drawing.Point(255, 321);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
@@ -79,9 +80,10 @@
             // labelTempo
             // 
             this.labelTempo.AutoSize = true;
-            this.labelTempo.Location = new System.Drawing.Point(133, 70);
+            this.labelTempo.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTempo.Location = new System.Drawing.Point(252, 156);
             this.labelTempo.Name = "labelTempo";
-            this.labelTempo.Size = new System.Drawing.Size(35, 13);
+            this.labelTempo.Size = new System.Drawing.Size(42, 17);
             this.labelTempo.TabIndex = 4;
             this.labelTempo.Text = "label1";
             this.labelTempo.Visible = false;
@@ -91,12 +93,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.ClientSize = new System.Drawing.Size(584, 562);
             this.Controls.Add(this.labelTempo);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btn);
             this.Controls.Add(this.label);
             this.Controls.Add(this.input);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Keystroke Project";
             this.ResumeLayout(false);

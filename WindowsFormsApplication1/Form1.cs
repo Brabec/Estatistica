@@ -77,7 +77,7 @@ namespace WindowsFormsApplication1
                 this.label.Text = db();
                 this.input.Text = "";
             }
-
+           
         }
 
         public string db()
