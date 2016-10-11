@@ -14,14 +14,19 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
+        private bool notChar = false;
         //static string path = Path.GetTempFileName();
         static int cont = 0;
         static double media = 0;
+        static double tempoTotal = 0;
+        static int score = 0;
+
         static string path = "C:\\Users\\Brabec\\Documents\\Estudos\\Estatística\\Estatistica\\dictionary.txt";
         static string[] lines = File.ReadAllLines(path);
-        static List<double> temp = new List<double>();
-        static double tempoTotal = 0;
 
+        static List<double> temp = new List<double>();
+        static Dictionary<char, int> dictionary = new Dictionary<char, int>();
+        
         public Form1()
         {
             InitializeComponent();
@@ -30,6 +35,31 @@ namespace WindowsFormsApplication1
         private void input_KeyDown(object sender, KeyEventArgs e)
         {
             
+            //KEYSTROKE
+            //Falta calcular a probabilidade das letras digitadas**
+            char key = (char)e.KeyCode;
+            try
+            {
+                dictionary[key] += 1;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                if (!dictionary.ContainsKey(key))
+                {
+                    dictionary.Add(key, 1);
+                }
+            }
+
+            foreach (KeyValuePair<char, int> kvp in dictionary)
+            {
+                Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+            }
+            //FIM
+
             KeysConverter converter = new KeysConverter();
             
             //    Codigo da tecla digitada
@@ -63,18 +93,42 @@ namespace WindowsFormsApplication1
             
         }
 
+        //Keystroke #1
+        private void playerName_KeyDown(object sender, KeyEventArgs e)
+        {
+            notChar = false;
+            if(playerName.TextLength > 0)
+            {
+                notChar = true;
+                
+            }
+            nameLabel.Text = "Ela aparece: " + gambiarraOcorrencia((char)e.KeyCode) + " vezes";
+
+        }
+
+        private void playerName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (notChar == true)
+            {
+                e.Handled = true;
+            }
+            
+        }
+
         private void input_TextChanged(object sender, EventArgs e)
         {
-           if (input.Text.Equals(label.Text))
+           if (input.Text.Equals(title.Text))
             {
+                score = score + 25;
                 cont++;
+                scoreLabel.Text = "Score: "+score;
                 if(cont == 3)
                 {
-                    btn.Enabled = true;
+                    calcBtn.Enabled = true;
                 }
                 // se for igual a função db será chamada retornando uma palavra aleatoria
                 // do dicionario
-                this.label.Text = db();
+                this.title.Text = db();
                 this.input.Text = "";
             }
            
@@ -89,17 +143,22 @@ namespace WindowsFormsApplication1
         }
 
         //probabilidade de uma letra especifica dentre o espaço amostral de jogadas
-        public int ocorrencia(string value)
+        public int gambiarraOcorrencia(char key)
         {
-            string alphabet = "abcdefghijklmnopqrstuvwxyz";
+            string alphabet = "abcdefghijklmnopqrstuvwxyz1234567890'´[]~ç;.,\\";
 
             foreach (char c in alphabet)
             {
-                if (value.Equals(c))
-                {
-
-                }
+                dictionary.Add(c, 0);
             }
+
+            if (dictionary.ContainsKey(key))
+            {
+                dictionary[key] += 1;
+                return dictionary[key];
+            }
+            
+            //se não encontrar a tecla digitada
             return 0;
         }
 
@@ -111,17 +170,21 @@ namespace WindowsFormsApplication1
         private void start_Click(object sender, EventArgs e)
         {
             this.input.Visible = true;
-            this.label.Text = db();
+            this.title.Text = db();
             //button1.Enabled = false;
-            button1.Visible = false;
+            startBtn.Visible = false;
+            scoreLabel.Visible = true;
+            
         }
 
-        private void btn_Click(object sender, EventArgs e)
+        private void calcBtn_Click(object sender, EventArgs e)
         {
             labelTempo.Visible = true;
             labelTempo.Text = "Média de Digitação: "+media+" segundos";
+            nameLabel.Visible = true;
             input.Visible = false;
-            btn.Visible = false;
+            calcBtn.Visible = false;
+            playerName.Visible = true;
         }
 
         private void labelTempo_Click(object sender, EventArgs e)
@@ -130,3 +193,10 @@ namespace WindowsFormsApplication1
         }
     }
 }
+
+/*  
+ *  UNIVERSIDADE FEDERAL DE SERGIPE (UFS)
+ *  Keystroke C# Project - Estatística Aplicada
+ *  Created by: Lucas Brabec Barreto Santana 
+ *  date:10/2016
+ */

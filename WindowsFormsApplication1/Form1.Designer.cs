@@ -29,10 +29,13 @@
         private void InitializeComponent()
         {
             this.input = new System.Windows.Forms.TextBox();
-            this.label = new System.Windows.Forms.Label();
-            this.btn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.title = new System.Windows.Forms.Label();
+            this.calcBtn = new System.Windows.Forms.Button();
+            this.startBtn = new System.Windows.Forms.Button();
             this.labelTempo = new System.Windows.Forms.Label();
+            this.scoreLabel = new System.Windows.Forms.Label();
+            this.nameLabel = new System.Windows.Forms.Label();
+            this.playerName = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // input
@@ -45,43 +48,43 @@
             this.input.TextChanged += new System.EventHandler(this.input_TextChanged);
             this.input.KeyDown += new System.Windows.Forms.KeyEventHandler(this.input_KeyDown);
             // 
-            // label
+            // title
             // 
-            this.label.AutoSize = true;
-            this.label.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label.Location = new System.Drawing.Point(251, 127);
-            this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(93, 19);
-            this.label.TabIndex = 1;
-            this.label.Text = "Fast Fingers";
-            this.label.Click += new System.EventHandler(this.label_Click);
+            this.title.AutoSize = true;
+            this.title.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.title.Location = new System.Drawing.Point(251, 127);
+            this.title.Name = "title";
+            this.title.Size = new System.Drawing.Size(93, 19);
+            this.title.TabIndex = 1;
+            this.title.Text = "Fast Fingers";
+            this.title.Click += new System.EventHandler(this.label_Click);
             // 
-            // btn
+            // calcBtn
             // 
-            this.btn.Enabled = false;
-            this.btn.Location = new System.Drawing.Point(255, 350);
-            this.btn.Name = "btn";
-            this.btn.Size = new System.Drawing.Size(75, 23);
-            this.btn.TabIndex = 2;
-            this.btn.Text = "calculate";
-            this.btn.UseVisualStyleBackColor = true;
-            this.btn.Click += new System.EventHandler(this.btn_Click);
+            this.calcBtn.Enabled = false;
+            this.calcBtn.Location = new System.Drawing.Point(255, 350);
+            this.calcBtn.Name = "calcBtn";
+            this.calcBtn.Size = new System.Drawing.Size(75, 23);
+            this.calcBtn.TabIndex = 2;
+            this.calcBtn.Text = "calculate";
+            this.calcBtn.UseVisualStyleBackColor = true;
+            this.calcBtn.Click += new System.EventHandler(this.calcBtn_Click);
             // 
-            // button1
+            // startBtn
             // 
-            this.button1.Location = new System.Drawing.Point(255, 321);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "start";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.start_Click);
+            this.startBtn.Location = new System.Drawing.Point(255, 321);
+            this.startBtn.Name = "startBtn";
+            this.startBtn.Size = new System.Drawing.Size(75, 23);
+            this.startBtn.TabIndex = 3;
+            this.startBtn.Text = "start";
+            this.startBtn.UseVisualStyleBackColor = true;
+            this.startBtn.Click += new System.EventHandler(this.start_Click);
             // 
             // labelTempo
             // 
             this.labelTempo.AutoSize = true;
             this.labelTempo.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTempo.Location = new System.Drawing.Point(252, 156);
+            this.labelTempo.Location = new System.Drawing.Point(58, 160);
             this.labelTempo.Name = "labelTempo";
             this.labelTempo.Size = new System.Drawing.Size(42, 17);
             this.labelTempo.TabIndex = 4;
@@ -89,16 +92,50 @@
             this.labelTempo.Visible = false;
             this.labelTempo.Click += new System.EventHandler(this.labelTempo_Click);
             // 
+            // scoreLabel
+            // 
+            this.scoreLabel.AutoSize = true;
+            this.scoreLabel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.scoreLabel.Location = new System.Drawing.Point(61, 215);
+            this.scoreLabel.Name = "scoreLabel";
+            this.scoreLabel.Size = new System.Drawing.Size(54, 19);
+            this.scoreLabel.TabIndex = 6;
+            this.scoreLabel.Text = "Score:";
+            this.scoreLabel.Visible = false;
+            // 
+            // nameLabel
+            // 
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Location = new System.Drawing.Point(252, 215);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(137, 13);
+            this.nameLabel.TabIndex = 7;
+            this.nameLabel.Text = "Digite o caractere desejado";
+            this.nameLabel.Visible = false;
+            // 
+            // playerName
+            // 
+            this.playerName.Location = new System.Drawing.Point(244, 236);
+            this.playerName.Name = "playerName";
+            this.playerName.Size = new System.Drawing.Size(100, 20);
+            this.playerName.TabIndex = 8;
+            this.playerName.Visible = false;
+            this.playerName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.playerName_KeyDown);
+            this.playerName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.playerName_KeyPress);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(584, 562);
+            this.Controls.Add(this.playerName);
+            this.Controls.Add(this.nameLabel);
+            this.Controls.Add(this.scoreLabel);
             this.Controls.Add(this.labelTempo);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btn);
-            this.Controls.Add(this.label);
+            this.Controls.Add(this.startBtn);
+            this.Controls.Add(this.calcBtn);
+            this.Controls.Add(this.title);
             this.Controls.Add(this.input);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -119,10 +156,13 @@
             return word;
         }
 
-        private System.Windows.Forms.Label label;
-        private System.Windows.Forms.Button btn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label title;
+        private System.Windows.Forms.Button calcBtn;
+        private System.Windows.Forms.Button startBtn;
         private System.Windows.Forms.Label labelTempo;
+        private System.Windows.Forms.Label scoreLabel;
+        private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.TextBox playerName;
     }
 }
 
