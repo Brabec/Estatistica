@@ -38,11 +38,15 @@
             this.playerInput = new System.Windows.Forms.TextBox();
             this.word = new System.Windows.Forms.Label();
             this.moda = new System.Windows.Forms.Label();
+            this.medianLabel = new System.Windows.Forms.Label();
+            this.varLabel = new System.Windows.Forms.Label();
+            this.sdLabel = new System.Windows.Forms.Label();
+            this.erroLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // input
             // 
-            this.input.Location = new System.Drawing.Point(242, 262);
+            this.input.Location = new System.Drawing.Point(292, 269);
             this.input.Name = "input";
             this.input.Size = new System.Drawing.Size(100, 20);
             this.input.TabIndex = 0;
@@ -54,7 +58,7 @@
             // 
             this.title.AutoSize = true;
             this.title.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.title.Location = new System.Drawing.Point(237, 57);
+            this.title.Location = new System.Drawing.Point(280, 57);
             this.title.Name = "title";
             this.title.Size = new System.Drawing.Size(125, 25);
             this.title.TabIndex = 1;
@@ -64,7 +68,7 @@
             // calcBtn
             // 
             this.calcBtn.Enabled = false;
-            this.calcBtn.Location = new System.Drawing.Point(255, 350);
+            this.calcBtn.Location = new System.Drawing.Point(309, 356);
             this.calcBtn.Name = "calcBtn";
             this.calcBtn.Size = new System.Drawing.Size(75, 23);
             this.calcBtn.TabIndex = 2;
@@ -74,7 +78,7 @@
             // 
             // startBtn
             // 
-            this.startBtn.Location = new System.Drawing.Point(255, 321);
+            this.startBtn.Location = new System.Drawing.Point(309, 311);
             this.startBtn.Name = "startBtn";
             this.startBtn.Size = new System.Drawing.Size(75, 23);
             this.startBtn.TabIndex = 3;
@@ -86,7 +90,7 @@
             // 
             this.labelTempo.AutoSize = true;
             this.labelTempo.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTempo.Location = new System.Drawing.Point(62, 160);
+            this.labelTempo.Location = new System.Drawing.Point(62, 125);
             this.labelTempo.Name = "labelTempo";
             this.labelTempo.Size = new System.Drawing.Size(130, 17);
             this.labelTempo.TabIndex = 4;
@@ -108,7 +112,7 @@
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(224, 215);
+            this.nameLabel.Location = new System.Drawing.Point(282, 215);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(137, 13);
             this.nameLabel.TabIndex = 7;
@@ -117,7 +121,7 @@
             // 
             // playerInput
             // 
-            this.playerInput.Location = new System.Drawing.Point(242, 236);
+            this.playerInput.Location = new System.Drawing.Point(292, 243);
             this.playerInput.Name = "playerInput";
             this.playerInput.Size = new System.Drawing.Size(100, 20);
             this.playerInput.TabIndex = 8;
@@ -129,7 +133,7 @@
             // 
             this.word.AutoSize = true;
             this.word.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.word.Location = new System.Drawing.Point(264, 132);
+            this.word.Location = new System.Drawing.Point(312, 141);
             this.word.Name = "word";
             this.word.Size = new System.Drawing.Size(72, 18);
             this.word.TabIndex = 9;
@@ -147,12 +151,60 @@
             this.moda.Text = "Moda";
             this.moda.Visible = false;
             // 
+            // medianLabel
+            // 
+            this.medianLabel.AutoSize = true;
+            this.medianLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.medianLabel.Location = new System.Drawing.Point(68, 337);
+            this.medianLabel.Name = "medianLabel";
+            this.medianLabel.Size = new System.Drawing.Size(56, 16);
+            this.medianLabel.TabIndex = 11;
+            this.medianLabel.Text = "Mediana";
+            this.medianLabel.Visible = false;
+            // 
+            // varLabel
+            // 
+            this.varLabel.AutoSize = true;
+            this.varLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.varLabel.Location = new System.Drawing.Point(371, 292);
+            this.varLabel.Name = "varLabel";
+            this.varLabel.Size = new System.Drawing.Size(61, 16);
+            this.varLabel.TabIndex = 12;
+            this.varLabel.Text = "Variancia";
+            this.varLabel.Visible = false;
+            // 
+            // sdLabel
+            // 
+            this.sdLabel.AutoSize = true;
+            this.sdLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sdLabel.Location = new System.Drawing.Point(371, 337);
+            this.sdLabel.Name = "sdLabel";
+            this.sdLabel.Size = new System.Drawing.Size(89, 16);
+            this.sdLabel.TabIndex = 13;
+            this.sdLabel.Text = "Desvio Padrão";
+            this.sdLabel.Visible = false;
+            // 
+            // erroLabel
+            // 
+            this.erroLabel.AutoSize = true;
+            this.erroLabel.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.erroLabel.Location = new System.Drawing.Point(424, 125);
+            this.erroLabel.Name = "erroLabel";
+            this.erroLabel.Size = new System.Drawing.Size(84, 16);
+            this.erroLabel.TabIndex = 14;
+            this.erroLabel.Text = "Prob. de Erro";
+            this.erroLabel.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(584, 562);
+            this.ClientSize = new System.Drawing.Size(684, 462);
+            this.Controls.Add(this.erroLabel);
+            this.Controls.Add(this.sdLabel);
+            this.Controls.Add(this.varLabel);
+            this.Controls.Add(this.medianLabel);
             this.Controls.Add(this.moda);
             this.Controls.Add(this.word);
             this.Controls.Add(this.playerInput);
@@ -191,6 +243,10 @@
         private System.Windows.Forms.TextBox playerInput;
         private System.Windows.Forms.Label word;
         private System.Windows.Forms.Label moda;
+        private System.Windows.Forms.Label medianLabel;
+        private System.Windows.Forms.Label varLabel;
+        private System.Windows.Forms.Label sdLabel;
+        private System.Windows.Forms.Label erroLabel;
     }
 }
 

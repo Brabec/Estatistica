@@ -14,12 +14,15 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
-        private bool notChar = false;
         //static string path = Path.GetTempFileName();
+        private bool notChar = false;
+
         static int cont = 0;
+        static int score = 0;
+
         static double media = 0;
         static double tempoTotal = 0;
-        static int score = 0;
+        static double mediana = 0;
         
         static string path = "C:\\Users\\Brabec\\Documents\\Estudos\\Estatística\\Estatistica\\dictionary.txt";
         static string[] lines = File.ReadAllLines(path);
@@ -31,26 +34,91 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
         }
-
-        public char mode()
+        
+        private bool exist(double member)
         {
-            int[] numbers = new int[dictionary.Count];
-            int j = 0;
-
-            foreach(KeyValuePair<char, int> kvp in dictionary)
+            bool is_exist = false;
+            int i = 0;
+            while (i <= temp.Count - 1 && !is_exist)
             {
-                numbers[j] = kvp.Value;
+                is_exist = (temp[i] == member);
+                i++;
+            }
+            return is_exist;
+        }
+
+        public double Z(double member)
+        {
+            try
+            {
+                if (exist(member)) return (member - media) / s();
+                else return double.NaN;
+            }
+            catch (Exception)
+            {
+                return double.NaN;
+            }
+        }
+
+        public double var()
+        {
+            try
+            {
+                double s = 0;
+                for (int i = 0; i <= temp.Count - 1; i++)
+                    s += Math.Pow(temp[i], 2);
+                return (s - temp.Count * Math.Pow(media, 2)) / (temp.Count - 1);
+            }
+            catch (Exception)
+            {
+                return double.NaN;
+            }
+        }
+
+        public double s()
+        {
+            return Math.Sqrt(var());
+        }
+
+        public char median()
+        {
+            int[] values;
+            double median;
+            int j = 0;
+            values = new int[dictionary.Count];
+
+            foreach (KeyValuePair<char, int> kvp in dictionary)
+            {
+                values[j] = kvp.Value;
                 j++;
             }
-            
-            var mode = numbers.GroupBy(n => n).
-                OrderByDescending(g => g.Count()).
-                Select(g => g.Key).FirstOrDefault();
-                //Console.WriteLine(("Mode is: " + mode));
 
-            var myKey = dictionary.FirstOrDefault(x => x.Value == mode).Key;
+            Array.Sort(values);
 
-            return myKey;
+            if (values.Length % 2 != 0)
+            {
+                median = values[values.Length / 2];
+            }
+            else
+            {
+                int middle = values.Length / 2;
+                double first = values[middle];
+                double second = values[middle - 1];
+                median = (first + second) / 2;
+            }
+
+            mediana = median;
+            char med = dictionary.FirstOrDefault(x => x.Value == median).Key;
+
+            return med;
+        }
+
+       
+        public char mode()
+        {
+            char mode = dictionary.FirstOrDefault(x => x.Value == dictionary.Values.Max()).Key;
+
+            return mode;
         }
 
         public void dicAdd(char key)
@@ -61,7 +129,7 @@ namespace WindowsFormsApplication1
             }
             catch (Exception ex)
             {
-                //Console.WriteLine(ex);
+                //Console.WriteLine(ex.Message);
             }
             finally
             {
@@ -77,21 +145,17 @@ namespace WindowsFormsApplication1
             }
             
         }
-
+        
         private void input_KeyDown(object sender, KeyEventArgs e)
         {
-
-            //Falta calcular a probabilidade das letras digitadas**
             // KEYSTROKE
+            // Codigo da tecla digitada
             char key = (char)e.KeyCode;
             dicAdd(key);
             // FIM
-
+            
             KeysConverter converter = new KeysConverter();
             
-            // Codigo da tecla digitada
-            string text = converter.ConvertToString(e.KeyCode);
-
             // calcular o tempo digitado
             DateTime st = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             var ts = new TimeSpan(DateTime.UtcNow.Ticks - st.Ticks);
@@ -180,6 +244,30 @@ namespace WindowsFormsApplication1
             //se não encontrar a tecla digitada
             return 0;
         }
+        
+        public double erroProb()
+        {
+            int total = 0;
+            float erro = 0;
+
+            foreach (KeyValuePair<char, int> kvp in dictionary)
+            {
+                total++;
+                if (kvp.Key == (char)Keys.Back)
+                {
+                    erro = kvp.Value;
+                }
+
+            }
+            
+            double prob = erro / total;
+
+            //Console.WriteLine("Erro: " + erro);
+            //Console.WriteLine("total: " + total);
+            //Console.WriteLine("prob: " + prob);
+
+            return prob * 100;
+        }
 
         private void label_Click(object sender, EventArgs e)
         {
@@ -197,13 +285,31 @@ namespace WindowsFormsApplication1
 
         private void calcBtn_Click(object sender, EventArgs e)
         {
+            sdLabel.Visible = true;
+            sdLabel.Text += ":" + String.Format("{0:0.00}", s());
+
+            varLabel.Visible = true;
+            varLabel.Text += ":" + String.Format("{0:0.00}", var());
+
+            medianLabel.Visible = true;
+            medianLabel.Text += ": " + median() + " \nValor da Mediana: "+mediana;
+
             labelTempo.Visible = true;
-            labelTempo.Text = "Média de Digitação: "+media+" segundos\nTempo Total: "+tempoTotal+" segundos";
+            labelTempo.Text = "Média de Digitação: "+ String.Format("{0:0.00}", media) + " segundos\n\nTempo Total: "+ String.Format("{0:0.00}", tempoTotal) + " segundos";
+
+            erroLabel.Visible = true;
+            erroLabel.Text += ": " + String.Format("{0:00}", erroProb())+"%";
+
             nameLabel.Visible = true;
+
             input.Visible = false;
+
             calcBtn.Visible = false;
+
             playerInput.Visible = true;
+
             word.Visible = false;
+
             moda.Visible = true;
             moda.Text += ": "+mode();
         }
