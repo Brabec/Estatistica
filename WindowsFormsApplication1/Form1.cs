@@ -31,7 +31,28 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
         }
-        
+
+        public char mode()
+        {
+            int[] numbers = new int[dictionary.Count];
+            int j = 0;
+
+            foreach(KeyValuePair<char, int> kvp in dictionary)
+            {
+                numbers[j] = kvp.Value;
+                j++;
+            }
+            
+            var mode = numbers.GroupBy(n => n).
+                OrderByDescending(g => g.Count()).
+                Select(g => g.Key).FirstOrDefault();
+                //Console.WriteLine(("Mode is: " + mode));
+
+            var myKey = dictionary.FirstOrDefault(x => x.Value == mode).Key;
+
+            return myKey;
+        }
+
         public void dicAdd(char key)
         {
             try
@@ -183,6 +204,8 @@ namespace WindowsFormsApplication1
             calcBtn.Visible = false;
             playerInput.Visible = true;
             word.Visible = false;
+            moda.Visible = true;
+            moda.Text += ": "+mode();
         }
 
         private void labelTempo_Click(object sender, EventArgs e)
@@ -195,6 +218,6 @@ namespace WindowsFormsApplication1
 /*  
  *  UNIVERSIDADE FEDERAL DE SERGIPE (UFS)
  *  Keystroke C# Project - Estatística Aplicada
- *  Created by: Lucas Brabec Barreto Santana 
+ *  Created by: Lucas Brabec Barreto Santana
  *  date:10/2016
  */
