@@ -35,12 +35,14 @@
             this.labelTempo = new System.Windows.Forms.Label();
             this.scoreLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
-            this.playerName = new System.Windows.Forms.TextBox();
+            this.playerInput = new System.Windows.Forms.TextBox();
+            this.word = new System.Windows.Forms.Label();
+            this.moda = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // input
             // 
-            this.input.Location = new System.Drawing.Point(244, 256);
+            this.input.Location = new System.Drawing.Point(242, 262);
             this.input.Name = "input";
             this.input.Size = new System.Drawing.Size(100, 20);
             this.input.TabIndex = 0;
@@ -51,10 +53,10 @@
             // title
             // 
             this.title.AutoSize = true;
-            this.title.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.title.Location = new System.Drawing.Point(251, 127);
+            this.title.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.title.Location = new System.Drawing.Point(237, 57);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(93, 19);
+            this.title.Size = new System.Drawing.Size(125, 25);
             this.title.TabIndex = 1;
             this.title.Text = "Fast Fingers";
             this.title.Click += new System.EventHandler(this.label_Click);
@@ -84,11 +86,11 @@
             // 
             this.labelTempo.AutoSize = true;
             this.labelTempo.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTempo.Location = new System.Drawing.Point(58, 160);
+            this.labelTempo.Location = new System.Drawing.Point(62, 160);
             this.labelTempo.Name = "labelTempo";
-            this.labelTempo.Size = new System.Drawing.Size(42, 17);
+            this.labelTempo.Size = new System.Drawing.Size(130, 17);
             this.labelTempo.TabIndex = 4;
-            this.labelTempo.Text = "label1";
+            this.labelTempo.Text = "Tempo de Digitação";
             this.labelTempo.Visible = false;
             this.labelTempo.Click += new System.EventHandler(this.labelTempo_Click);
             // 
@@ -106,22 +108,44 @@
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(252, 215);
+            this.nameLabel.Location = new System.Drawing.Point(224, 215);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(137, 13);
             this.nameLabel.TabIndex = 7;
             this.nameLabel.Text = "Digite o caractere desejado";
             this.nameLabel.Visible = false;
             // 
-            // playerName
+            // playerInput
             // 
-            this.playerName.Location = new System.Drawing.Point(244, 236);
-            this.playerName.Name = "playerName";
-            this.playerName.Size = new System.Drawing.Size(100, 20);
-            this.playerName.TabIndex = 8;
-            this.playerName.Visible = false;
-            this.playerName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.playerName_KeyDown);
-            this.playerName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.playerName_KeyPress);
+            this.playerInput.Location = new System.Drawing.Point(242, 236);
+            this.playerInput.Name = "playerInput";
+            this.playerInput.Size = new System.Drawing.Size(100, 20);
+            this.playerInput.TabIndex = 8;
+            this.playerInput.Visible = false;
+            this.playerInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.playerInput_KeyDown);
+            this.playerInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.playerInput_KeyPress);
+            // 
+            // word
+            // 
+            this.word.AutoSize = true;
+            this.word.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.word.Location = new System.Drawing.Point(264, 132);
+            this.word.Name = "word";
+            this.word.Size = new System.Drawing.Size(72, 18);
+            this.word.TabIndex = 9;
+            this.word.Text = "randWord";
+            this.word.Visible = false;
+            // 
+            // moda
+            // 
+            this.moda.AutoSize = true;
+            this.moda.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moda.Location = new System.Drawing.Point(65, 292);
+            this.moda.Name = "moda";
+            this.moda.Size = new System.Drawing.Size(39, 16);
+            this.moda.TabIndex = 10;
+            this.moda.Text = "Moda";
+            this.moda.Visible = false;
             // 
             // Form1
             // 
@@ -129,7 +153,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(584, 562);
-            this.Controls.Add(this.playerName);
+            this.Controls.Add(this.moda);
+            this.Controls.Add(this.word);
+            this.Controls.Add(this.playerInput);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.scoreLabel);
             this.Controls.Add(this.labelTempo);
@@ -162,7 +188,9 @@
         private System.Windows.Forms.Label labelTempo;
         private System.Windows.Forms.Label scoreLabel;
         private System.Windows.Forms.Label nameLabel;
-        private System.Windows.Forms.TextBox playerName;
+        private System.Windows.Forms.TextBox playerInput;
+        private System.Windows.Forms.Label word;
+        private System.Windows.Forms.Label moda;
     }
 }
 
