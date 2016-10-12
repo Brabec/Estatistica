@@ -22,7 +22,7 @@ namespace WindowsFormsApplication1
 
         static double media = 0;
         static double tempoTotal = 0;
-        static double mediana = 0;
+        static int mediana = 0;
         
         static string path = "C:\\Users\\Brabec\\Documents\\Estudos\\Estatística\\Estatistica\\dictionary.txt";
         static string[] lines = File.ReadAllLines(path);
@@ -104,10 +104,10 @@ namespace WindowsFormsApplication1
                 int middle = values.Length / 2;
                 double first = values[middle];
                 double second = values[middle - 1];
-                median = (first + second) / 2;
+                median = (int)((first + second) / 2);
             }
 
-            mediana = median;
+            mediana = (int)median;
             char med = dictionary.FirstOrDefault(x => x.Value == median).Key;
 
             return med;
