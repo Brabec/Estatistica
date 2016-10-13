@@ -23,8 +23,7 @@ namespace WindowsFormsApplication1
         static double media = 0;
         static double tempoTotal = 0;
         static int mediana = 0;
-        
-        static string path = "C:\\Users\\Brabec\\Documents\\Estudos\\Estatística\\Estatistica\\dictionary.txt";
+        static string path = Path.GetFullPath(Directory.GetCurrentDirectory() + @"\dictionary.txt"); // relative path
         static string[] lines = File.ReadAllLines(path);
 
         private List<double> temp = new List<double>();
@@ -173,7 +172,7 @@ namespace WindowsFormsApplication1
                 labelTempo.Text = converter.ConvertToString(tempoAtual);
                 tempoTotal += tempoAtual;
             }
-            
+
             media = tempoTotal / cont;
             
         }
@@ -212,7 +211,7 @@ namespace WindowsFormsApplication1
                 score = score + 25;
                 scoreLabel.Text = "Score: "+score;
 
-                if (cont == 15)
+                if (cont == 10)
                 {
                     calcBtn.Enabled = true;
                 }
