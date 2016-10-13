@@ -23,7 +23,7 @@ namespace WindowsFormsApplication1
         static double media = 0;
         static double tempoTotal = 0;
         static int mediana = 0;
-        static string path = Path.GetFullPath(Directory.GetCurrentDirectory() + @"\dictionary.txt"); // relative path
+        static string path = Path.GetFullPath("dictionary.txt"); // relative path
         static string[] lines = File.ReadAllLines(path);
 
         private List<double> temp = new List<double>();
