@@ -1,12 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -23,7 +18,7 @@ namespace WindowsFormsApplication1
         static double media = 0;
         static double tempoTotal = 0;
         static int mediana = 0;
-        static string path = Path.GetFullPath("dictionary.txt"); // relative path
+        static string path = Path.GetFullPath("dictionary.txt"); 
         static string[] lines = File.ReadAllLines(path);
 
         private List<double> temp = new List<double>();
@@ -211,7 +206,7 @@ namespace WindowsFormsApplication1
                 score = score + 25;
                 scoreLabel.Text = "Score: "+score;
 
-                if (cont == 10)
+                if (cont == 15)
                 {
                     calcBtn.Enabled = true;
                 }
